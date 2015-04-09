@@ -16,8 +16,7 @@ class SSDSpider(CrawlSpider):
 
     def parse_item(self, response):
         t_cl_item=response.xpath('//table[@class="item"]')
-        items=[]
-
+        
         for t in t_cl_item:
             l = ItemLoader(item=SSDItem(), selector=t)
             l.add_xpath('name', './/td[@class="l"]/a/text()')
@@ -25,8 +24,7 @@ class SSDSpider(CrawlSpider):
             l.add_xpath('club_price', './/div[@class="price club_price"]/text()')
             l.add_xpath('img_url', './/div[@class="photo"]/span/img/@src')
             l.add_xpath('url', './/td[@class="l"]/a/@href')
-            items.append(l.load_item())
-        return items
+            yield l.load_item()
 
     def parse_start_url(self, response):
         '''

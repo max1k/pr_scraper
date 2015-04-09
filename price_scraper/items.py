@@ -11,4 +11,6 @@ import scrapy
 class SSDItem(scrapy.Item):
     name = scrapy.Field()
     url = scrapy.Field()
-    price = scrapy.Field()
+    usual_price = scrapy.Field()
+    club_price = scrapy.Field()
+    img_url = scrapy.Field()
